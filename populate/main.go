@@ -41,6 +41,12 @@ type entry struct {
 	Meta  byte
 }
 
+func fillValue(value []byte) {
+	for i, _ := range value {
+		value[i] = byte(65 + i % 26);
+	}
+}
+
 func fillEntry(e *entry) {
 	k := rand.Int() % int(*numKeys*mil)
 	key := fmt.Sprintf("vsz=%05d-k=%010d", *valueSize, k) // 22 bytes.
@@ -49,8 +55,8 @@ func fillEntry(e *entry) {
 	}
 	e.Key = e.Key[:len(key)]
 	copy(e.Key, key)
-
-	rand.Read(e.Value)
+	fillValue(e.Value);
+	//rand.Read(e.Value)
 	e.Meta = 0
 }
 

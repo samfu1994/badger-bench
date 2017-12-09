@@ -63,7 +63,7 @@ func main() {
     os.MkdirAll(*dir+"/badger", 0777)
     bdb, err = badger.Open(opt)
     if err != nil {
-        log.Fatalf("while opening badger: %v", err)
+        log.Fatalf("while  1 opening badger: %v", err)
     }
 
     // Add your benchmarking code here
